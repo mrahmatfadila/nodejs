@@ -1,0 +1,97 @@
+Untuk menjalankan node js
+1. ketik di terminal "node namafile.js"
+
+Untuk NODE REPL
+1. ketikkan di terminal "node" -> console.info("Hello World") -> .help (untuk melihat info) -> .exit (untuk keluar dri repl)
+
+untuk meninstal npm
+1. ketikkan di terminal "npm init"
+2. silah isi sesuaikan
+3. jika sudah selesai semuanya muncul file package.json defaultnya "type": "common" ubah ke "type": "module" supaya bisa import atau bisa menjalankan module
+
+Debugger
+1. ketikkan di terminal "node inspect namafile.mjs" dia akan mengecek jika ada debugger di dalamnya dan next untukmelanjutkan proses penacrian debugger
+2. untuk mengetahui variable name ketikan aja di terminal watch("name")
+
+NPM library
+1. Buat akun npm atau jika sudah punya langsung login
+2. masuk ke vscode buat folder "belajar-nodejs-npm-library" (bebas nama foldernya)
+3. ketikkan di terminal "npm init" -> dan ubah isi package.json ke "type" : "module"
+4. buat file inde.js isi kan simple export contoh:
+export const sayHello = (name) => {
+    return `Hello ${name}`;
+}
+
+export const sum = (numbers) => {
+    let total = 0;
+    for (const number of numbers) {
+        total += number;
+    }
+    return total;
+}
+5. ketikkan di terminal  "npm adduser" -> masukkan username &b password -> masukkan tokenyang di krim ke email
+6. jika sudah baru ketikkan "npm publish" dan masuk ke web npm nya ke -> package -> nnti ada muncul yg tdi kita uat
+7. jika kita mau ada perubahan atau penambahan fitur maka di package.json nya harus di ubah juga versionya nya (major, minor, path), karena di sini penambahan fitur maka menggunakan minor yaitu 1.1.0
+8. dan ubah juga samakan di main nya (index.js)
+"exports": {
+    ".": "./index.js",
+    "./number": "./number.js"
+  }
+9. jika sudah semua lakukan di terminal "npm publish"
+10. jika sudah semua kita lakukan update ketikkan di terminak "npm update mamat-belajar-nodejs-npm-library" ingat yg kita update itu minornya jdi harus pakai tanda ^ di version package.json
+
+Menjalankan Babel/Jest
+1. npm install --save-dev babel-jest
+2. copy dan pastekan di bawah test di dalam package.json
+"jest": {
+    "transform": {
+      "^.+\\.[t|j]sx?$": "babel-jest"
+    }
+3. buat file babel.config.json di dalamnya isi kan 
+{
+  "presets": ["@babel/preset-env"]
+}
+4. npm install @babel/preset-env --save-dev
+5. npx jest --init
+6. untuk test secara spesifik ketikkan "npx jest --runTestsByPath test/sum.test.js"
+7. untuk test secara spesifik detail isi dari textnya ketikkan "npx jest --testNamePattern "test sum function 2"
+8. npm install @babel/plugin-transform-runtime --save-dev (untuk menjalankan async secara runtime) dan tambahkan di bawah "presets"
+"plugins": [
+        [
+            "@babel/plugin-transform-runtime",
+            {
+                "regenerator": true
+            }
+        ]
+    ]
+9. "collectCoverage": true (file package.json) untuk melihat hasil coverage
+10. Jenis code coverage
+- branches : Alur Program
+- function : Function
+- lines : Baris
+- statements : Statement
+==========================================================
+Nodejs Database
+1. npm init
+2. ubah type ke module
+3. npm install --save-dev jest @types/jest4. npm install --save-dev babel-jest @babel/preset-env
+3. setup https://babeljs.io/setup#installation
+4. 
+
+install prismas
+1. npm install prisma --save-dev
+2. 
+
+
+
+fyi
+- jika menggunakan promise itu tandanya menggunakan async await jdi harus di tambahkan await di depan programnya
+- version x selalu yang paling baru ketika di npm install (contoh "lodash": "x") dia akan download version yang paling terbaru
+- "npm install --production" jadi ketika di commit folder module tidak akan ikut atau di hapus dan kita ketikkan npm install --production di server untuk menginstall yang dependencies saja devdependencies tidak ikut keinstall
+- untuk menjalankan node_modules ada 3 
+	- ketikkan di terminal node_modules/.bin/jest
+	- ubah di dlam file package.json di bagian "test": "jest" di jadiin jest, terus jalnkan di terminal 	ketikkan "npm test"
+	- atau bisa dengan ketikkan langsung "npx test" di terminal, jdi npx itu akan mengecek di bagian 	node_modules/.bin ada jest gak kalo ada jalankan
+- dengan babel kita bisa membuat code program dengan fitur javascript terbaru, seperti modules, tapi bisa di compile menjadi code javascript lama sehingga compatible ketika di jalankan oeh teknologi lama atau yang belum mendukung fitur javacsript baru
+
+
